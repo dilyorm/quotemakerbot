@@ -5,6 +5,7 @@ from PIL import Image, ImageDraw, ImageFont
 from datetime import datetime
 import hashlib
 import textwrap
+from typing import Optional
 
 def download_font() -> tuple[str, str]:
     font_reg = "Roboto-Regular.ttf"
@@ -55,7 +56,7 @@ def get_wrapped_lines(text: str, font: ImageFont.FreeTypeFont, max_width: int) -
         lines.append(current_line)
     return lines
 
-def create_quote_image(avatar_bytes: bytes | None, name: str, text: str, theme: str = "default") -> BytesIO:
+def create_quote_image(avatar_bytes: Optional[bytes], name: str, text: str, theme: str = "default") -> BytesIO:
     reg_font_path, bold_font_path = download_font()
     
     font_size_text = 28
